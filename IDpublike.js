@@ -1,32 +1,18 @@
-{const emri = document
-        .getElementById("emri")
-        .value
-        .trim();
+async function kerkoID() {
 
-    const mbiemri = document
-        .getElementById("mbiemri")
-        .value
-        .trim();
+    const emri = document.getElementById("emri").value.trim();
+    const mbiemri = document.getElementById("mbiemri").value.trim();
+    const nid = document.getElementById("nid").value.trim();
 
-    const nid = document
-        .getElementById("nid")
-        .value
-        .trim();
+    const rezultati = document.getElementById("rezultati");
 
-    const rezultati = document
-        .getElementById("rezultati");
+    if (emri === "" || mbiemri === "" || nid === "") {
 
-    if(emri === "" || mbiemri === "" || nid === ""){
-
-        rezultati.innerHTML =
-            "Plotësoni të gjitha fushat!";
-
-        rezultati.className = "error";
-
+        rezultati.innerHTML = "Plotësoni të gjitha fushat!";
         return;
     }
 
-    try{
+    try {
 
         const response = await fetch("/kerko", {
 
@@ -45,16 +31,20 @@
 
         const data = await response.json();
 
-        rezultati.innerHTML = data.mesazh;
+        if (data.sukses) {
 
-        rezultati.className =
-            data.success ? "success" : "error";
+            rezultati.innerHTML =
+                "ID e Maturës:<br><br>" + data.id;
 
-    }catch(error){
+        } else {
+
+            rezultati.innerHTML =
+                "Të dhënat nuk u gjetën!";
+        }
+
+    } catch (error) {
 
         rezultati.innerHTML =
             "Gabim në lidhje me serverin!";
-
-        rezultati.className = "error";
     }
 }

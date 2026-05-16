@@ -1,158 +1,85 @@
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
 }
 
-body {
+body{
     font-family: Arial, Helvetica, sans-serif;
-    background: #e5e7eb; /* Sfondi i hirtë i ekranit */
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+    background:#f2f5f9;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-.container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.container{
+    width:420px;
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 0 20px rgba(0,0,0,0.1);
 }
 
-.card {
-    width: 100%;
-    max-width: 440px; /* Madhësia kompakte ekzakte si në foto */
-    background: #ffffff;
-    padding: 40px 35px;
-    border-radius: 24px; /* Këndet e rrumbullakosura të kartës */
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+h1{
+    text-align:center;
+    color:#2a2a8b;
+    font-size:30px;
+    margin-bottom:20px;
+    font-weight:bold;
 }
 
-h1 {
-    text-align: center;
-    color: #2b2d42; /* Ngjyra e errët e titullit Gjimnazi Milot */
-    font-size: 28px;
-    margin-bottom: 8px;
-    font-weight: 700;
+.subtitle{
+    text-align:center;
+    color:#000000;
+    font-size:14px;
+    margin-bottom:30px;
 }
 
-.subtitle {
-    text-align: center;
-    color: #6c757d;
-    font-size: 14.5px;
-    margin-bottom: 35px;
-    font-weight: normal;
+label{
+    display:block;
+    margin-bottom:8px;
+    font-size:15px;
+    font-weight:bold;
+    color:#444;
 }
 
-.form-group {
-    margin-bottom: 18px;
+input{
+    width:100%;
+    padding:16px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    font-size:18px;
+    margin-bottom:25px;
+    outline:none;
 }
 
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 14px;
-    font-weight: 700;
-    color: #333333;
+input:focus{
+    outline:none;
+    border-color:#0d6efd;
 }
 
-input {
-    width: 100%;
-    padding: 11px 14px;
-    border: 1px solid #ced4da; /* Kufizues i hollë si në foto */
-    border-radius: 8px;
-    font-size: 14px;
-    transition: 0.2s;
-    color: #495057;
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    background:#ff7b00;
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
+
+button:hover{
+    background:#ec8d64;
 }
 
-input:focus {
-    outline: none;
-    border-color: #ca723a;
-    box-shadow: 0 0 0 3px rgba(202, 114, 58, 0.15);
-}
-
-input::placeholder {
-    color: #adb5bd; /* Ngjyra e zbehtë e shkrimeve brenda fushave */
-}
-
-button {
-    width: 100%;
-    padding: 13px;
-    border: none;
-    background: #ca723a; /* Ngjyra ekzakte portokalli në kafe e butonit */
-    color: white;
-    font-size: 13.5px;
-    font-weight: 700;
-    border-radius: 8px;
-    cursor: pointer;
-    text-transform: uppercase; /* Shkronja të mëdha si në foto */
-    letter-spacing: 0.5px;
-    transition: 0.2s;
-    margin-top: 15px;
-}
-
-button:hover {
-    background: #b56230;
-}
-
-/* --- PJESA E REZULTATIT --- */
-#rezultati {
-    margin-top: 25px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.success {
-    display: block !important;
-    background: #e8fff0;
-    color: #146c2e;
-    padding: 15px;
-    border-radius: 10px;
-    border: 1px solid #bde5c8;
-}
-
-.error {
-    display: block !important;
-    background: #ffe3e3;
-    color: #b30000;
-    padding: 15px;
-    border-radius: 10px;
-    border: 1px solid #ffb3b3;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.success h2 {
-    font-size: 18px;
-    margin-bottom: 8px;
-}
-
-.success p {
-    font-size: 14px;
-    margin-top: 5px;
-}
-
-/* Detyrojmë elementin h1 me klasën .id-final të marrë stilin e ID-së blu 
-   pa u ndikuar nga rregullat e përgjithshme të h1 më sipër.
-*/
-h1.id-final {
-    color: #0d6efd !important;
-    font-size: 24px !important;
-    font-weight: bold !important;
-    margin-top: 12px !important;
-    text-align: center !important;
-    letter-spacing: 1px !important;
-}
-
-@media(max-width: 480px) {
-    .card {
-        padding: 30px 20px;
-        margin: 10px;
-    }
-    h1 {
-        font-size: 24px;
-    }
+#rezultati{
+    margin-top:25px;
+    text-align:center;
+    font-size:20px;
+    font-weight:bold;
+    color:#333;
 }

@@ -3,6 +3,7 @@ const path = require("path");
 
 const app = express();
 
+// Middleware për të lexuar JSON dhe skedarët statikë
 app.use(express.json());
 app.use(express.static(__dirname));
 
@@ -14,21 +15,28 @@ const database = [
     { emri: "Adenis", mbiemri: "Muça", nid: "K80510028A", id: "262526600029" }
 ];
 
-// Hap index.html
+// Hap index.html në rrënjë (root)
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
 });
 
-// Kerkimi i ID
+// Kërkimi i ID
 app.post("/kerkoID", (req, res) => {
-
     const { emri, mbiemri, nid } = req.body;
+
+    // Sigurohemi që inputet nuk janë boshe për të shmangur gabimet me .toLowerCase()
+    if (!emri || !mbiemri || !nid) {
+        return res.status(400).json({
+            success: false,
+            message: "Ju lutem plotësoni të gjitha fushat!"
+        });
+    }
 
     const studenti = database.find(
         s =>
-            s.emri.toLowerCase() === emri.toLowerCase() &&
-            s.mbiemri.toLowerCase() === mbiemri.toLowerCase() &&
-            s.nid.toLowerCase() === nid.toLowerCase()
+            s.emri?.toLowerCase() === emri.trim().toLowerCase() &&
+            s.mbiemri?.toLowerCase() === mbiemri.trim().toLowerCase() &&
+            s.nid?.toLowerCase() === nid.trim().toLowerCase()
     );
 
     if (studenti) {
@@ -45,9 +53,9 @@ app.post("/kerkoID", (req, res) => {
     }
 });
 
-// PORT për Render
+// PORT për Render (Default në 10000 nëse nuk jepet nga mjedisi)
 const PORT = process.env.PORT || 10000;
 
 app.listen(PORT, () => {
-    console.log(`Serveri u ndez ne portin ${PORT}`);
+    console.log(`Serveri u ndez në portin ${PORT}`);
 });

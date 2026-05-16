@@ -3,37 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gjimnazi Milot - ID e Maturës</title>
-    <link rel="stylesheet" href="ID.css">
+    <title>Kërko ID e Maturës</title>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            background:#f2f2f2;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            margin:0;
+        }
+
+        .container{
+            background:white;
+            padding:30px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,0.2);
+            width:350px;
+            text-align:center;
+        }
+
+        h1{
+            margin-bottom:20px;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            margin:10px 0;
+            border:1px solid #ccc;
+            border-radius:5px;
+            font-size:16px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            border:none;
+            background:#007bff;
+            color:white;
+            font-size:16px;
+            border-radius:5px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#0056b3;
+        }
+
+        #rezultati{
+            margin-top:20px;
+            font-size:18px;
+            font-weight:bold;
+        }
+
+    </style>
 
 </head>
 <body>
+
     <div class="container">
-        <div class="card">
-            <h1>Gjimnazi Milot</h1>
-            <p class="subtitle">
-                Kontrollo ID e Maturës Shtetërore 2026
-            </p>
-            <div class="form-group">
-                <label>Emri</label>
 
-                <input type="text" id="emri" placeholder="Shkruaj emrin">
-            </div>
+        <h1>Kërko ID e Maturës</h1>
 
-            <div class="form-group">
-                <label>Mbiemri</label>
-                <input type="text" id="mbiemri" placeholder="Shkruaj mbiemrin">
-            </div>
-            <div class="form-group">
-                <label>ID e kartës së identitetit</label>
-                <input type="text" id="nid" placeholder="Shkruaj NID">
-            </div>
-            <button onclick="kerkoID()">
-                KËRKO ID E MATURËS
-            </button>
-            <div id="rezultati"></div>
-        </div>
+        <input type="text" id="emri" placeholder="Emri">
+        <input type="text" id="mbiemri" placeholder="Mbiemri">
+        <input type="text" id="nid" placeholder="NID">
+
+        <button onclick="kerkoID()">
+            KËRKO ID E MATURËS
+        </button>
+
+        <div id="rezultati"></div>
+
     </div>
-    <script src="./IDpublike.js"></script>
+
+<script>
+
+async function kerkoID() {
+
+    const emri = document.getElementById("emri").value.trim();
+    const mbiemri = document.getElementById("mbiemri").value.trim();
+    const nid = document.getElementById("nid").value.trim();
+
+    const rezultati = document.getElementById("rezultati");
+
+    if (emri === "" || mbiemri === "" || nid === "") {
+
+        rezultati.innerHTML = "Plotësoni të gjitha fushat!";
+        return;
+
+    }
+
+    try {
+
+        const response = await fetch("/kerkoID", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                emri,
+                mbiemri,
+                nid
+            })
+
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+
+            rezultati.innerHTML = `
+                ID e Maturës:
+                <br><br>
+                ${data.id}
+            `;
+
+        } else {
+
+            rezultati.innerHTML = "Të dhënat nuk u gjetën!";
+
+        }
+
+    } catch (error) {
+
+        rezultati.innerHTML = "Gabim në server!";
+
+    }
+
+}
+
+</script>
+
 </body>
 </html>

@@ -6,7 +6,6 @@ async function kerkoID() {
 
     const rezultati = document.getElementById("rezultati");
 
-    // Kontrollo nëse fushat janë bosh
     if (emri === "" || mbiemri === "" || nid === "") {
         rezultati.innerHTML = "Plotësoni të gjitha fushat!";
         return;
@@ -31,8 +30,8 @@ async function kerkoID() {
         if (data.success) {
 
             rezultati.innerHTML = `
-                ID e Maturës:<br><br>
-                <strong>${data.id}</strong>
+                <h3>ID e Maturës</h3>
+                <p>${data.id}</p>
             `;
 
         } else {
@@ -47,3 +46,5 @@ async function kerkoID() {
 
     }
 }
+
+window.kerkoID = kerkoID;

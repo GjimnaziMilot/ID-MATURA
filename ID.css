@@ -23,7 +23,7 @@ body {
 
 .card {
     width: 100%;
-    max-width: 440px; /* Madhësia kompakte si në foto */
+    max-width: 440px; /* Madhësia kompakte ekzakte si në foto */
     background: #ffffff;
     padding: 40px 35px;
     border-radius: 24px; /* Këndet e rrumbullakosura të kartës */
@@ -43,6 +43,7 @@ h1 {
     color: #6c757d;
     font-size: 14.5px;
     margin-bottom: 35px;
+    font-weight: normal;
 }
 
 .form-group {
@@ -97,7 +98,7 @@ button:hover {
     background: #b56230;
 }
 
-/* --- PJESA E REZULTATIT (Stiluar sipas përmasave të reja) --- */
+/* --- PJESA E REZULTATIT --- */
 #rezultati {
     margin-top: 25px;
     border-radius: 10px;
@@ -134,19 +135,22 @@ button:hover {
     margin-top: 5px;
 }
 
-/* Këtu stilojmë h1 e re që krijon funksioni yt për ID-në */
-.id-final {
+/* Detyrojmë elementin h1 me klasën .id-final të marrë stilin e ID-së blu 
+   pa u ndikuar nga rregullat e përgjithshme të h1 më sipër.
+*/
+h1.id-final {
     color: #0d6efd !important;
     font-size: 24px !important;
     font-weight: bold !important;
     margin-top: 12px !important;
     text-align: center !important;
-    letter-spacing: 1px;
+    letter-spacing: 1px !important;
 }
 
 @media(max-width: 480px) {
     .card {
         padding: 30px 20px;
+        margin: 10px;
     }
     h1 {
         font-size: 24px;

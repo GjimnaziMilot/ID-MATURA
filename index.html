@@ -3,99 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Gjimnazi Milot - ID e Maturës</title>
-
-    <link rel="stylesheet" href="html.css">
+    <link rel="stylesheet" href="ID.css">
 
 </head>
 <body>
+    <div class="container">
+        <div class="card">
+            <h1>Gjimnazi Milot</h1>
+            <p class="subtitle">
+                Kontrollo ID e Maturës Shtetërore 2026
+            </p>
+            <div class="form-group">
+                <label>Emri</label>
 
-<div class="container">
+                <input type="text" id="emri" placeholder="Shkruaj emrin">
+            </div>
 
-    <h1>Gjimnazi Milot</h1>
-
-    <div class="subtitle">
-        Kontrollo ID e Maturës Shtetërore 2026
+            <div class="form-group">
+                <label>Mbiemri</label>
+                <input type="text" id="mbiemri" placeholder="Shkruaj mbiemrin">
+            </div>
+            <div class="form-group">
+                <label>ID e kartës së identitetit</label>
+                <input type="text" id="nid" placeholder="Shkruaj NID">
+            </div>
+            <button onclick="kerkoID()">
+                KËRKO ID E MATURËS
+            </button>
+            <div id="rezultati"></div>
+        </div>
     </div>
-
-    <label>Emri</label>
-    <input type="text" id="emri" placeholder="Shkruaj emrin">
-
-    <label>Mbiemri</label>
-    <input type="text" id="mbiemri" placeholder="Shkruaj mbiemrin">
-
-    <label>ID e kartës së identitetit</label>
-    <input type="text" id="nid" placeholder="Shkruaj NID">
-
-    <button onclick="kerkoID()">
-        KËRKO ID E MATURËS
-    </button>
-
-    <div id="rezultati"></div>
-
-</div>
-
-<script>
-
-async function kerkoID() {
-
-    const emri = document.getElementById("emri").value.trim();
-    const mbiemri = document.getElementById("mbiemri").value.trim();
-    const nid = document.getElementById("nid").value.trim();
-
-    const rezultati = document.getElementById("rezultati");
-
-    if(emri === "" || mbiemri === "" || nid === ""){
-
-        rezultati.innerHTML = "Plotësoni të gjitha fushat!";
-        return;
-
-    }
-
-    try{
-
-        const response = await fetch("/kerkoID", {
-
-            method:"POST",
-
-            headers:{
-                "Content-Type":"application/json"
-            },
-
-            body:JSON.stringify({
-                emri,
-                mbiemri,
-                nid
-            })
-
-        });
-
-        const data = await response.json();
-
-        if(data.success){
-
-            rezultati.innerHTML = `
-                ID e Maturës:
-                <br><br>
-                ${data.id}
-            `;
-
-        }else{
-
-            rezultati.innerHTML = "Të dhënat nuk u gjetën!";
-
-        }
-
-    }catch(error){
-
-        rezultati.innerHTML = "Gabim në server!";
-
-    }
-
-}
-
-</script>
-
+    <script src="IDpublike.js"></script>
 </body>
 </html>

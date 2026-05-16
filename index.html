@@ -3,112 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Gjimnazi Milot - ID e Maturës</title>
 
     <link rel="stylesheet" href="ID.css">
+
 </head>
 <body>
 
-    <div class="container">
-        <div class="card">
+<div class="container">
 
-            <h1>Gjimnazi Milot</h1>
+    <h1>Gjimnazi Milot</h1>
 
-            <p class="subtitle">
-                Kontrollo ID e Maturës Shtetërore 2026
-            </p>
-
-            <div class="form-group">
-                <label>Emri</label>
-                <input type="text" id="emri" placeholder="Shkruaj emrin">
-            </div>
-
-            <div class="form-group">
-                <label>Mbiemri</label>
-                <input type="text" id="mbiemri" placeholder="Shkruaj mbiemrin">
-            </div>
-
-            <div class="form-group">
-                <label>ID e kartës së identitetit</label>
-                <input type="text" id="nid" placeholder="Shkruaj NID">
-            </div>
-
-            <button onclick="kerkoID()">
-                KËRKO ID E MATURËS
-            </button>
-
-            <div id="rezultati"></div>
-
-        </div>
+    <div class="subtitle">
+        Kontrollo ID e Maturës Shtetërore 2026
     </div>
 
-    <script>
-        function kerkoID() {
+    <label>Emri</label>
+    <input type="text" id="emri" placeholder="Shkruaj emrin">
 
-            const emri = document.getElementById("emri").value.trim();
-            const mbiemri = document.getElementById("mbiemri").value.trim();
-            const nid = document.getElementById("nid").value.trim();
+    <label>Mbiemri</label>
+    <input type="text" id="mbiemri" placeholder="Shkruaj mbiemrin">
 
-            const rezultati = document.getElementById("rezultati");
+    <label>ID e kartës së identitetit</label>
+    <input type="text" id="nid" placeholder="Shkruaj NID">
 
-            if (emri === "" || mbiemri === "" || nid === "") {
+    <button onclick="kerkoID()">
+        KËRKO ID E MATURËS
+    </button>
 
-                rezultati.innerHTML = `
-                    <div style="
-                        margin-top:20px;
-                        background:#ffe5e5;
-                        color:#c0392b;
-                        padding:15px;
-                        border-radius:10px;
-                        font-weight:bold;
-                        text-align:center;
-                    ">
-                        Plotëso të gjitha fushat!
-                    </div>
-                `;
+    <div id="rezultati"></div>
 
-                return;
-            }
+</div>
 
-            const idMatures =
-                "M2026-" +
-                Math.floor(100000 + Math.random() * 900000);
+<script>
+
+async function kerkoID() {
+
+    const emri = document.getElementById("emri").value.trim();
+    const mbiemri = document.getElementById("mbiemri").value.trim();
+    const nid = document.getElementById("nid").value.trim();
+
+    const rezultati = document.getElementById("rezultati");
+
+    if(emri === "" || mbiemri === "" || nid === ""){
+
+        rezultati.innerHTML = "Plotësoni të gjitha fushat!";
+        return;
+
+    }
+
+    try{
+
+        const response = await fetch("/kerkoID", {
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify({
+                emri,
+                mbiemri,
+                nid
+            })
+
+        });
+
+        const data = await response.json();
+
+        if(data.success){
 
             rezultati.innerHTML = `
-                <div style="
-                    margin-top:20px;
-                    background:#e8fff0;
-                    color:#1e7e34;
-                    padding:20px;
-                    border-radius:12px;
-                    text-align:center;
-                    box-shadow:0 4px 10px rgba(0,0,0,0.1);
-                ">
-
-                    <h2 style="margin-bottom:10px;">
-                        ID u gjenerua me sukses
-                    </h2>
-
-                    <p>
-                        <strong>${emri} ${mbiemri}</strong>
-                    </p>
-
-                    <p>
-                        NID: ${nid}
-                    </p>
-
-                    <h1 style="
-                        margin-top:15px;
-                        color:#0d6efd;
-                        font-size:32px;
-                    ">
-                        ${idMatures}
-                    </h1>
-
-                </div>
+                ID e Maturës:
+                <br><br>
+                ${data.id}
             `;
+
+        }else{
+
+            rezultati.innerHTML = "Të dhënat nuk u gjetën!";
+
         }
-    </script>
+
+    }catch(error){
+
+        rezultati.innerHTML = "Gabim në server!";
+
+    }
+
+}
+
+</script>
 
 </body>
 </html>

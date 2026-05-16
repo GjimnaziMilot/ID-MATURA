@@ -48,3 +48,4 @@ async function kerkoID() {
 }
 
 window.kerkoID = kerkoID;
+alert("JavaScript u ngarkua");

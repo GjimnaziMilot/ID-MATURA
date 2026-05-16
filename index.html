@@ -3,39 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Gjimnazi Milot - ID e Maturës</title>
-
     <link rel="stylesheet" href="ID.css">
 
 </head>
 <body>
+    <div class="container">
+        <div class="card">
+            <h1>Gjimnazi Milot</h1>
+            <p class="subtitle">
+                Kontrollo ID e Maturës Shtetërore 2026
+            </p>
+            <div class="form-group">
+                <label>Emri</label>
 
-<div class="container">
+                <input type="text" id="emri" placeholder="Shkruaj emrin">
+            </div>
 
-    <h1>Gjimnazi Milot</h1>
-
-    <div class="subtitle">
-        Kontrollo ID e Maturës Shtetërore 2026
+            <div class="form-group">
+                <label>Mbiemri</label>
+                <input type="text" id="mbiemri" placeholder="Shkruaj mbiemrin">
+            </div>
+            <div class="form-group">
+                <label>ID e kartës së identitetit</label>
+                <input type="text" id="nid" placeholder="Shkruaj NID">
+            </div>
+            <button onclick="kerkoID()">
+                KËRKO ID E MATURËS
+            </button>
+            <div id="rezultati"></div>
+        </div>
     </div>
-
-    <label>Emri</label>
-    <input type="text" id="emri" placeholder="Shkruaj emrin">
-
-    <label>Mbiemri</label>
-    <input type="text" id="mbiemri" placeholder="Shkruaj mbiemrin">
-
-    <label>ID e kartës së identitetit</label>
-    <input type="text" id="nid" placeholder="Shkruaj NID">
-
-    <button onclick="kerkoID()">
-        KËRKO ID E MATURËS
-    </button>
-
-    <div id="rezultati"></div>
-
-</div>
-
 <script>
 
 async function kerkoID() {

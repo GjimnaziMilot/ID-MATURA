@@ -48,6 +48,7 @@ async function kerkoID() {
 
     if(emri === "" || mbiemri === "" || nid === ""){
 
+        rezultati.className = ""; 
         rezultati.innerHTML = "Plotësoni të gjitha fushat!";
         return;
 
@@ -75,6 +76,7 @@ async function kerkoID() {
 
         if(data.success){
 
+            rezultati.className = "kuti-jeshile"; 
             rezultati.innerHTML = `
                 ID e Maturës:
                 <br><br>
@@ -83,12 +85,14 @@ async function kerkoID() {
 
         }else{
 
+            rezultati.className = "tekst-kuq"; 
             rezultati.innerHTML = "Të dhënat nuk u gjetën!";
 
         }
 
     }catch(error){
 
+        rezultati.className = "tekst-kalter"; 
         rezultati.innerHTML = "Gabim në server!";
 
     }

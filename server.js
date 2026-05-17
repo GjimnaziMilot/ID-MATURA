@@ -28,7 +28,7 @@ const database = [
     { emri: "Serena", mbiemri: "Kokaj", nid: "K76231031M", id: "262526600021" },
     { emri: "Sibora", mbiemri: "Kola", nid: "K7029024N", id: "262526600012" },
     { emri: "Vjolentina", mbiemri: "Pjetri", nid: "K85820021N", id: "262526600005" },
-    { emri: "Adenis", mbiemri: "Muça", nid: "K80510028A", id: "262526600029" }
+    { emri: "Adenis", mbiemri: "Muça", nid: "K80510028A", id: "262526600029" },
     { emri: "Alesja", mbiemri: "Hysa", nid: "K75905078I", id: "262526600002" },
     { emri: "Arber", mbiemri: "Ahmeti", nid: "K80625031G", id: "262526600030" },
     { emri: "Ardit", mbiemri: "Veseli", nid: "K80104053I", id: "262526600032" },
@@ -47,7 +47,6 @@ const database = [
     { emri: "Sindi", mbiemri: "Çupi", nid: "K86202014Q", id: "262526600010" },
     { emri: "Sindi", mbiemri: "Tafa", nid: "K85205031T", id: "262526600027" },
     { emri: "Smerald", mbiemri: "Veseli", nid: "K80407024T", id: "262526600033" }
-    
 ];
 
 // Hap index.html në rrënjë (root)

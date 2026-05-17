@@ -86,10 +86,10 @@ button:hover{
 /* --- KLASAT E REJA PËR KUTITË E REZULTATEVE --- */
 
 /* Kutia jeshile (Kur gjendet ID-ja - si në foton e dytë) */
-{
+ {
     background-color: #e2f7e3;
     color: #88f549;
-    border: 1px solid #4fa153;
+    border: 1px solid #9edda1;
     padding: 16px;
     border-radius: 12px;
     display: block;

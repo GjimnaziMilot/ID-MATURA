@@ -43,7 +43,7 @@ const database = [
     { emri: "Kleanda", mbiemri: "Kola", nid: "K86018009I", id: "262526600001" },
     { emri: "Leandro", mbiemri: "Osmani", nid: "K81216033N", id: "262526600019" },
     { emri: "Leo", mbiemri: "Vokrri", nid: "K80721031M", id: "262526600008" },
-    { emri: "Samuel", mbiemri: "Kasmi", nid: "K80614027P", id: "262526600039" },
+    { emri: "Samuel", mbiemri: "Kasmi", nid: "K80614027P", id: "Mbetës në vjeshtë 262526600039" },
     { emri: "Sindi", mbiemri: "Çupi", nid: "K86202014Q", id: "262526600010" },
     { emri: "Sindi", mbiemri: "Tafa", nid: "K85205031T", id: "262526600027" },
     { emri: "Smerald", mbiemri: "Veseli", nid: "K80407024T", id: "262526600033" }

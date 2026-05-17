@@ -82,3 +82,36 @@ button:hover{
     font-weight:bold;
     color:#333;
 }
+
+/* --- KLASAT E REJA PËR KUTITË E REZULTATEVE --- */
+
+/* Kutia jeshile (Kur gjendet ID-ja - si në foton e dytë) */
+.kuti-jeshile {
+    background-color: #eaf5f5;
+    color: #24585a;
+    border: 1px solid #a8ced0;
+    padding: 16px;
+    border-radius: 12px;
+    display: block;
+    line-height: 1.5;
+}
+
+/* Kutia e kuqe (Kur të dhënat nuk u gjetën - si në foton e parë) */
+.tekst-kuq {
+    background-color: #fce8e6;
+    color: #a83232;
+    border: 1px solid #e8b0b0;
+    padding: 16px;
+    border-radius: 12px;
+    display: block;
+}
+
+/* Kutia blu (Kur ka gabim në server) */
+.tekst-kalter {
+    background-color: #e8f0fe;
+    color: #1a73e8;
+    border: 1px solid #aecbfa;
+    padding: 16px;
+    border-radius: 12px;
+    display: block;
+}

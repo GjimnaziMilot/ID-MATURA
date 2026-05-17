@@ -14,9 +14,9 @@ body{
 }
 
 .container{
-    width:420px;
+    width:450px;
     background:white;
-    padding:40px;
+    padding:30px;
     border-radius:20px;
     box-shadow:0 0 20px rgba(0,0,0,0.1);
 }
@@ -24,55 +24,55 @@ body{
 h1{
     text-align:center;
     color:#3d3d78;
-    font-size:52px;
+    font-size:30px;
     margin-bottom:20px;
     font-weight:bold;
 }
 
 .subtitle{
     text-align:center;
-    color:#555;
-    font-size:18px;
-    margin-bottom:35px;
+    color:#0e0b0b;
+    font-size:16px;
+    margin-bottom:30px;
 }
 
 label{
     display:block;
-    margin-bottom:10px;
-    font-size:18px;
+    margin-bottom:12px;
+    font-size:16px;
     font-weight:bold;
     color:#444;
 }
 
 input{
     width:100%;
-    padding:16px;
-    border:1px solid #ddd;
-    border-radius:12px;
-    font-size:18px;
-    margin-bottom:25px;
+    padding:10px;
+    border:1px solid #cac6c6;
+    border-radius:8px;
+    font-size:16px;
+    margin-bottom:20px;
     outline:none;
 }
 
 input:focus{
-    border:1px solid #f39b75;
+    border:1px solid #246cf1;
 }
 
 button{
     width:100%;
-    padding:16px;
+    padding:15px;
     border:none;
     border-radius:12px;
-    background:#f4a07d;
-    color:white;
-    font-size:20px;
+    background:#ff7b00;
+    color:rgb(255, 255, 255);
+    font-size:17px;
     font-weight:bold;
     cursor:pointer;
     transition:0.3s;
 }
 
 button:hover{
-    background:#ec8d64;
+    background:#5f1515;
 }
 
 #rezultati{
@@ -80,38 +80,43 @@ button:hover{
     text-align:center;
     font-size:20px;
     font-weight:bold;
-    color:#333;
+
 }
 
 /* --- KLASAT E REJA PËR KUTITË E REZULTATEVE --- */
 
 /* Kutia jeshile (Kur gjendet ID-ja - si në foton e dytë) */
 .kuti-jeshile {
-    background-color: #eaf5f5;
-    color: #24585a;
-    border: 1px solid #a8ced0;
+    background-color: #31ff3b;
+    color: #88f549;
+    border: 1px solid #4fa153;
     padding: 16px;
     border-radius: 12px;
     display: block;
     line-height: 1.5;
+    font-weight: bold;
 }
 
 /* Kutia e kuqe (Kur të dhënat nuk u gjetën - si në foton e parë) */
 .tekst-kuq {
     background-color: #fce8e6;
-    color: #a83232;
-    border: 1px solid #e8b0b0;
+    color: #f03636;
+    border: 1px solid #d47a7a;
     padding: 16px;
     border-radius: 12px;
     display: block;
+    line-height: 1.5;
+    font-weight: bold;
 }
 
 /* Kutia blu (Kur ka gabim në server) */
 .tekst-kalter {
-    background-color: #e8f0fe;
-    color: #1a73e8;
-    border: 1px solid #aecbfa;
+    background-color: #bae9ff;
+    color: #1869d4;
+    border: 1px solid #5684ce;
     padding: 16px;
     border-radius: 12px;
     display: block;
+    line-height: 1.5;
+    font-weight: bold;
 }

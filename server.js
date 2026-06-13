@@ -29,7 +29,7 @@ const database = [
     { emri: "Luis", mbiemri: "Lika", nid: "K71226024R", id: "262526600009" },
     { emri: "Mariglen", mbiemri: "Hyseni", nid: "K80421023M", id: "262526600022" },
     { emri: "Serena", mbiemri: "Kokaj", nid: "K76231031M", id: "262526600021" },
-    { emri: "Sibora", mbiemri: "Kola", nid: "K7029024N", id: "262526600012" }, // Kujdes: Ky NID ka 9 karaktere, verifikoje
+    { emri: "Sibora", mbiemri: "Kola", nid: "K76029024N", id: "262526600012" }, // Kujdes: Ky NID ka 9 karaktere, verifikoje
     { emri: "Vjolentina", mbiemri: "Pjetri", nid: "K85820021N", id: "262526600005" },
     { emri: "Adenis", mbiemri: "Muça", nid: "K80510028A", id: "262526600029" },
     { emri: "Alesja", mbiemri: "Hysa", nid: "K75905078I", id: "262526600002" },

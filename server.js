@@ -1,12 +1,15 @@
 const express = require("express");
 const path = require("path");
+const cors = require("cors"); // Shtuar për siguri në komunikim cross-origin
 
 const app = express();
 
-// Middleware për të lexuar JSON dhe skedarët statikë
+// Middleware
+app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname));
 
+// Databaza e nxënësve
 const database = [
     { emri: "Alesja", mbiemri: "Veseli", nid: "K85523029O", id: "262526600015" },
     { emri: "Alonso", mbiemri: "Lleshi", nid: "K71017040R", id: "262526600017" },
@@ -26,7 +29,7 @@ const database = [
     { emri: "Luis", mbiemri: "Lika", nid: "K71226024R", id: "262526600009" },
     { emri: "Mariglen", mbiemri: "Hyseni", nid: "K80421023M", id: "262526600022" },
     { emri: "Serena", mbiemri: "Kokaj", nid: "K76231031M", id: "262526600021" },
-    { emri: "Sibora", mbiemri: "Kola", nid: "K7029024N", id: "262526600012" },
+    { emri: "Sibora", mbiemri: "Kola", nid: "K7029024N", id: "262526600012" }, // Kujdes: Ky NID ka 9 karaktere, verifikoje
     { emri: "Vjolentina", mbiemri: "Pjetri", nid: "K85820021N", id: "262526600005" },
     { emri: "Adenis", mbiemri: "Muça", nid: "K80510028A", id: "262526600029" },
     { emri: "Alesja", mbiemri: "Hysa", nid: "K75905078I", id: "262526600002" },
@@ -49,16 +52,15 @@ const database = [
     { emri: "Smerald", mbiemri: "Veseli", nid: "K80407024T", id: "262526600033" }
 ];
 
-// Hap index.html në rrënjë (root)
+// Shërbimi i faqes kryesore
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
 });
 
-// Kërkimi i ID
+// Endpoint-i i kërkimit
 app.post("/kerkoID", (req, res) => {
     const { emri, mbiemri, nid } = req.body;
 
-    // Sigurohemi që inputet nuk janë boshe për të shmangur gabimet me .toLowerCase()
     if (!emri || !mbiemri || !nid) {
         return res.status(400).json({
             success: false,
@@ -82,12 +84,12 @@ app.post("/kerkoID", (req, res) => {
     } else {
         res.json({
             success: false,
-            message: "Nxënësi nuk u gjet!"
+            message: "Nxënësi nuk u gjet! Kontrolloni saktësinë e të dhënave."
         });
     }
 });
 
-// PORT për Render (Default në 10000 nëse nuk jepet nga mjedisi)
+// Porti automatik për Render ose lokal 10000
 const PORT = process.env.PORT || 10000;
 
 app.listen(PORT, () => {

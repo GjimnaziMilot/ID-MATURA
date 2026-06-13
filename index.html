@@ -3,11 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Gjimnazi Milot - ID e Maturës</title>
-
     <link rel="stylesheet" href="ID.css">
-
 </head>
 <body>
 
@@ -17,6 +14,8 @@
 
     <div class="subtitle">
         Kontrollo ID e Maturës Shtetërore 2026
+        <br>
+        <small style="color: #e67e22; font-size: 11px;">(Përdorni shkronjat Ë dhe Ç nëse i keni në emër/mbiemër)</small>
     </div>
 
     <label>Emri</label>
@@ -26,7 +25,7 @@
     <input type="text" id="mbiemri" placeholder="Shkruaj mbiemrin">
 
     <label>ID e kartës së identitetit</label>
-    <input type="text" id="nid" placeholder="Shkruaj NID">
+    <input type="text" id="nid" placeholder="Shkruaj NID (psh. K85...)">
 
     <button onclick="kerkoID()">
         KËRKO ID E MATURËS
@@ -37,68 +36,51 @@
 </div>
 
 <script>
-
 async function kerkoID() {
-
     const emri = document.getElementById("emri").value.trim();
     const mbiemri = document.getElementById("mbiemri").value.trim();
     const nid = document.getElementById("nid").value.trim();
-
     const rezultati = document.getElementById("rezultati");
 
-    if(emri === "" || mbiemri === "" || nid === ""){
+    // Pastrojmë klasat dhe stilin e vjetër përpara kërkesës së re
+    rezultati.className = ""; 
+    rezultati.innerHTML = "";
 
-        rezultati.className = ""; 
-        rezultati.innerHTML = "Plotësoni të gjitha fushat!";
+    if (emri === "" || mbiemri === "" || nid === "") {
+        rezultati.className = "tekst-kuq"; 
+        rezultati.innerHTML = "Ju lutem plotësoni të gjitha fushat!";
         return;
-
     }
 
-    try{
-
-        const response = await fetch("https://id-matura.onrender.com", {
-
-            method:"POST",
-
-            headers:{
-                "Content-Type":"application/json"
+    try {
+        // Kërkesa dërgohet ekzaktesisht te endpoint-i /kerkoID
+        const response = await fetch("https://id-matura.onrender.com/kerkoID", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
             },
-
-            body:JSON.stringify({
-                emri,
-                mbiemri,
-                nid
-            })
-
+            body: JSON.stringify({ emri, mbiemri, nid })
         });
 
         const data = await response.json();
 
-        if(data.success){
-
+        if (data.success) {
             rezultati.className = "kuti-jeshile"; 
             rezultati.innerHTML = `
-                ID e Maturës:
+                ID e Maturës u gjet:
                 <br><br>
-                ${data.id}
+                <strong>${data.id}</strong>
             `;
-
-        }else{
-
+        } else {
             rezultati.className = "tekst-kuq"; 
-            rezultati.innerHTML = "Të dhënat nuk u gjetën!";
-
+            rezultati.innerHTML = data.message;
         }
 
-    }catch(error){
-
+    } catch (error) {
         rezultati.className = "tekst-kalter"; 
-        rezultati.innerHTML = "Gabim në server!";
-
+        rezultati.innerHTML = "Gabim në lidhjen me serverin!";
     }
-
 }
-
 </script>
 
 </body>
